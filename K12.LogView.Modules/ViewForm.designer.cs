@@ -51,14 +51,7 @@
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.checkBoxX7 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.checkBoxX3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX6 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX5 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -127,11 +120,11 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(12, 119);
+            this.dataGridViewX1.Location = new System.Drawing.Point(12, 84);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(768, 342);
+            this.dataGridViewX1.Size = new System.Drawing.Size(768, 377);
             this.dataGridViewX1.TabIndex = 3;
             this.dataGridViewX1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewX1_CellMouseDoubleClick);
             this.dataGridViewX1.SelectionChanged += new System.EventHandler(this.dataGridViewX1_SelectionChanged);
@@ -191,19 +184,19 @@
             this.檢視詳細資料ToolStripMenuItem,
             this.刪除系統歷程ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 48);
             // 
             // 檢視詳細資料ToolStripMenuItem
             // 
             this.檢視詳細資料ToolStripMenuItem.Name = "檢視詳細資料ToolStripMenuItem";
-            this.檢視詳細資料ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.檢視詳細資料ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.檢視詳細資料ToolStripMenuItem.Text = "檢視詳細資料";
             this.檢視詳細資料ToolStripMenuItem.Click += new System.EventHandler(this.檢視詳細資料ToolStripMenuItem_Click);
             // 
             // 刪除系統歷程ToolStripMenuItem
             // 
             this.刪除系統歷程ToolStripMenuItem.Name = "刪除系統歷程ToolStripMenuItem";
-            this.刪除系統歷程ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.刪除系統歷程ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.刪除系統歷程ToolStripMenuItem.Text = "刪除系統歷程";
             this.刪除系統歷程ToolStripMenuItem.Visible = false;
             this.刪除系統歷程ToolStripMenuItem.Click += new System.EventHandler(this.刪除系統歷程ToolStripMenuItem_Click);
@@ -214,11 +207,11 @@
             this.btnReF.BackColor = System.Drawing.Color.Transparent;
             this.btnReF.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnReF.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.btnReF.Location = new System.Drawing.Point(402, 43);
+            this.btnReF.Location = new System.Drawing.Point(231, 5);
             this.btnReF.Name = "btnReF";
-            this.btnReF.Size = new System.Drawing.Size(109, 23);
+            this.btnReF.Size = new System.Drawing.Size(75, 25);
             this.btnReF.TabIndex = 4;
-            this.btnReF.Text = "重新整理";
+            this.btnReF.Text = "查詢";
             this.btnReF.Click += new System.EventHandler(this.btnReF_Click);
             // 
             // dateTimeInput1
@@ -234,7 +227,7 @@
             this.dateTimeInput1.ButtonFreeText.Checked = true;
             this.dateTimeInput1.FreeTextEntryMode = true;
             this.dateTimeInput1.IsPopupCalendarOpen = false;
-            this.dateTimeInput1.Location = new System.Drawing.Point(82, 7);
+            this.dateTimeInput1.Location = new System.Drawing.Point(78, 7);
             // 
             // 
             // 
@@ -295,7 +288,7 @@
             this.dateTimeInput2.ButtonFreeText.Checked = true;
             this.dateTimeInput2.FreeTextEntryMode = true;
             this.dateTimeInput2.IsPopupCalendarOpen = false;
-            this.dateTimeInput2.Location = new System.Drawing.Point(82, 42);
+            this.dateTimeInput2.Location = new System.Drawing.Point(291, 7);
             // 
             // 
             // 
@@ -352,11 +345,12 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(11, 9);
+            this.labelX1.Location = new System.Drawing.Point(7, 9);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(74, 21);
             this.labelX1.TabIndex = 2;
             this.labelX1.Text = "開始日期：";
+            this.labelX1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.labelX1_MouseDoubleClick);
             // 
             // labelX2
             // 
@@ -367,7 +361,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(11, 44);
+            this.labelX2.Location = new System.Drawing.Point(220, 9);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(74, 21);
             this.labelX2.TabIndex = 3;
@@ -380,9 +374,9 @@
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(100, 42);
+            this.textBoxX1.Location = new System.Drawing.Point(92, 5);
             this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(294, 25);
+            this.textBoxX1.Size = new System.Drawing.Size(130, 25);
             this.textBoxX1.TabIndex = 8;
             this.textBoxX1.TextChanged += new System.EventHandler(this.textBoxX1_TextChanged);
             // 
@@ -398,7 +392,7 @@
             this.groupPanel1.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
             this.groupPanel1.Location = new System.Drawing.Point(12, 12);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(237, 101);
+            this.groupPanel1.Size = new System.Drawing.Size(439, 66);
             // 
             // 
             // 
@@ -431,27 +425,19 @@
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 11;
             this.groupPanel1.Text = "步驟1設定日期";
-            this.groupPanel1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.groupPanel1_MouseDoubleClick);
             // 
             // groupPanel2
             // 
             this.groupPanel2.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel2.Controls.Add(this.checkBoxX7);
-            this.groupPanel2.Controls.Add(this.labelX3);
-            this.groupPanel2.Controls.Add(this.checkBoxX3);
-            this.groupPanel2.Controls.Add(this.checkBoxX2);
-            this.groupPanel2.Controls.Add(this.checkBoxX1);
             this.groupPanel2.Controls.Add(this.textBoxX1);
-            this.groupPanel2.Controls.Add(this.checkBoxX6);
-            this.groupPanel2.Controls.Add(this.checkBoxX5);
+            this.groupPanel2.Controls.Add(this.labelX3);
             this.groupPanel2.Controls.Add(this.btnReF);
-            this.groupPanel2.Controls.Add(this.checkBoxX4);
             this.groupPanel2.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.groupPanel2.Location = new System.Drawing.Point(255, 12);
+            this.groupPanel2.Location = new System.Drawing.Point(457, 12);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(525, 101);
+            this.groupPanel2.Size = new System.Drawing.Size(323, 66);
             // 
             // 
             // 
@@ -485,22 +471,6 @@
             this.groupPanel2.TabIndex = 12;
             this.groupPanel2.Text = "步驟2選擇篩選條件";
             // 
-            // checkBoxX7
-            // 
-            this.checkBoxX7.AutoSize = true;
-            this.checkBoxX7.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.checkBoxX7.BackgroundStyle.Class = "";
-            this.checkBoxX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX7.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX7.Location = new System.Drawing.Point(346, 7);
-            this.checkBoxX7.Name = "checkBoxX7";
-            this.checkBoxX7.Size = new System.Drawing.Size(54, 21);
-            this.checkBoxX7.TabIndex = 19;
-            this.checkBoxX7.Text = "功能";
-            // 
             // labelX3
             // 
             this.labelX3.AutoSize = true;
@@ -509,109 +479,11 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(12, 44);
+            this.labelX3.Location = new System.Drawing.Point(5, 7);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(87, 21);
             this.labelX3.TabIndex = 17;
             this.labelX3.Text = "輸入關鍵字：";
-            // 
-            // checkBoxX3
-            // 
-            this.checkBoxX3.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX3.BackgroundStyle.Class = "";
-            this.checkBoxX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX3.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX3.Location = new System.Drawing.Point(178, 7);
-            this.checkBoxX3.Name = "checkBoxX3";
-            this.checkBoxX3.Size = new System.Drawing.Size(80, 21);
-            this.checkBoxX3.TabIndex = 18;
-            this.checkBoxX3.Text = "電腦名稱";
-            // 
-            // checkBoxX2
-            // 
-            this.checkBoxX2.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX2.BackgroundStyle.Class = "";
-            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX2.Location = new System.Drawing.Point(109, 7);
-            this.checkBoxX2.Name = "checkBoxX2";
-            this.checkBoxX2.Size = new System.Drawing.Size(65, 21);
-            this.checkBoxX2.TabIndex = 17;
-            this.checkBoxX2.Text = "IP位置";
-            // 
-            // checkBoxX1
-            // 
-            this.checkBoxX1.AutoSize = true;
-            this.checkBoxX1.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.checkBoxX1.BackgroundStyle.Class = "";
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX1.Checked = true;
-            this.checkBoxX1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxX1.CheckValue = "Y";
-            this.checkBoxX1.Location = new System.Drawing.Point(3, 7);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(102, 21);
-            this.checkBoxX1.TabIndex = 16;
-            this.checkBoxX1.Text = "依日期(預設)";
-            this.checkBoxX1.CheckedChanged += new System.EventHandler(this.checkBoxX1_CheckedChanged);
-            // 
-            // checkBoxX6
-            // 
-            this.checkBoxX6.AutoSize = true;
-            this.checkBoxX6.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.checkBoxX6.BackgroundStyle.Class = "";
-            this.checkBoxX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX6.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX6.Location = new System.Drawing.Point(462, 7);
-            this.checkBoxX6.Name = "checkBoxX6";
-            this.checkBoxX6.Size = new System.Drawing.Size(54, 21);
-            this.checkBoxX6.TabIndex = 15;
-            this.checkBoxX6.Text = "描述";
-            // 
-            // checkBoxX5
-            // 
-            this.checkBoxX5.AutoSize = true;
-            this.checkBoxX5.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.checkBoxX5.BackgroundStyle.Class = "";
-            this.checkBoxX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX5.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX5.Location = new System.Drawing.Point(404, 7);
-            this.checkBoxX5.Name = "checkBoxX5";
-            this.checkBoxX5.Size = new System.Drawing.Size(54, 21);
-            this.checkBoxX5.TabIndex = 14;
-            this.checkBoxX5.Text = "動作";
-            // 
-            // checkBoxX4
-            // 
-            this.checkBoxX4.AutoSize = true;
-            this.checkBoxX4.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.checkBoxX4.BackgroundStyle.Class = "";
-            this.checkBoxX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX4.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX4.Location = new System.Drawing.Point(262, 7);
-            this.checkBoxX4.Name = "checkBoxX4";
-            this.checkBoxX4.Size = new System.Drawing.Size(80, 21);
-            this.checkBoxX4.TabIndex = 13;
-            this.checkBoxX4.Text = "登入帳號";
             // 
             // saveFileDialog1
             // 
@@ -649,9 +521,9 @@
             // 
             this.ClientSize = new System.Drawing.Size(792, 502);
             this.Controls.Add(this.labelX4);
-            this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.dataGridViewX1);
+            this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.buttonX1);
             this.MaximizeBox = true;
@@ -685,18 +557,11 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX6;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX5;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX4;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX3;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX2;
         private DevComponents.DotNetBar.LabelX labelX4;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX7;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 檢視詳細資料ToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

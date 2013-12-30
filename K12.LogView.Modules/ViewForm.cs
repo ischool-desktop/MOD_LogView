@@ -83,19 +83,11 @@ namespace K12.LogView.Modules
         {
             InitializeComponent();
             textBoxX1.Text = FISCA.Authentication.DSAServices.UserAccount;
-            checkBoxX4.Checked = true;
             guoupPanel2();
         }
 
         private void guoupPanel2()
         {
-            checkBoxX1.Enabled = false;
-            checkBoxX2.Enabled = false;
-            checkBoxX3.Enabled = false;
-            checkBoxX4.Enabled = false;
-            checkBoxX5.Enabled = false;
-            checkBoxX6.Enabled = false;
-            checkBoxX7.Enabled = false;
             labelX3.Enabled = false;
             textBoxX1.Enabled = false;
             groupPanel2.Text = "步驟2選擇篩選條件(本模式,無法使用篩選條件)";
@@ -135,27 +127,12 @@ namespace K12.LogView.Modules
         {
             RunBGW();
 
-            if (string.IsNullOrEmpty(textBoxX1.Text) && !checkBoxX1.Checked)
-            {
-                MsgBox.Show("除日期條件不使用關鍵字\nIP篩選,電腦名稱篩選,登入帳號篩選,動作篩選,描述篩選\n皆需輸入篩選關鍵字。");
-                onLock(true);
-                return;
-            }
-
             if (!string.IsNullOrEmpty(_GTarget) && _TargetIDList.Count != 0)
-                _ModeType = ModeType.依類別_ID;
-            else if (checkBoxX2.Checked)
-                _ModeType = ModeType.依IP位置;
-            else if (checkBoxX3.Checked)
-                _ModeType = ModeType.依電腦名稱;
-            else if (checkBoxX4.Checked)
-                _ModeType = ModeType.依登入帳號;
-            else if (checkBoxX5.Checked)
-                _ModeType = ModeType.依動作;
-            else if (checkBoxX6.Checked)
-                _ModeType = ModeType.依描述;
-            else if (checkBoxX7.Checked)
-                _ModeType = ModeType.依功能;
+                _ModeType = ModeType.依類別與ID;
+            else if (!string.IsNullOrEmpty(textBoxX1.Text))
+            {
+                _ModeType = ModeType.依關鍵字;
+            }
             else
                 _ModeType = ModeType.依日期;
 
@@ -177,9 +154,9 @@ namespace K12.LogView.Modules
         {
             if (!ISSpecial)
             {
-                if (_ModeType == ModeType.依類別_ID)
+                if (_ModeType == ModeType.依類別與ID)
                 {
-                    #region 依類別+ID
+                    #region 依類別與ID
 
                     string st = string.Join("','", _TargetIDList.ToArray());
                     StringBuilder st_3 = new StringBuilder();
@@ -196,66 +173,19 @@ namespace K12.LogView.Modules
 
                     #endregion
                 }
-                else if (_ModeType == ModeType.依登入帳號)
+                else if (_ModeType == ModeType.依關鍵字)
                 {
-                    #region 使用登入帳號條件
+                    #region 依關鍵字
 
                     StringBuilder st_3 = new StringBuilder();
                     st_3.Append(string.Format("where server_time>'{0}' ", time1.ToString(TimeDisplayFormat)));
                     st_3.Append(string.Format("and server_time<'{0}' ", time2.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and actor LIKE '%{0}%'", StringTextBoxX1));
-                    st_3.Append("and not (action_by LIKE '%[特殊歷程]%')");
-
-                    if (CheckDataRow(st_3.ToString()))
-                        e.Cancel = true;
-
-                    dt = GetQuery(st_3.ToString());
-
-                    #endregion
-                }
-                else if (_ModeType == ModeType.依動作)
-                {
-                    #region 使用動作條件
-
-                    StringBuilder st_3 = new StringBuilder();
-                    st_3.Append(string.Format("where server_time>'{0}' ", time1.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and server_time<'{0}' ", time2.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and action LIKE '%{0}%'", StringTextBoxX1));
-                    st_3.Append("and not (action_by LIKE '%[特殊歷程]%')");
-
-                    if (CheckDataRow(st_3.ToString()))
-                        e.Cancel = true;
-
-                    dt = GetQuery(st_3.ToString());
-
-                    #endregion
-                }
-                else if (_ModeType == ModeType.依功能)
-                {
-                    #region 使用功能條件
-
-                    StringBuilder st_3 = new StringBuilder();
-                    st_3.Append(string.Format("where server_time>'{0}' ", time1.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and server_time<'{0}' ", time2.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and action_by LIKE '%{0}%'", StringTextBoxX1));
-                    st_3.Append("and not (action_by LIKE '%[特殊歷程]%')");
-
-                    if (CheckDataRow(st_3.ToString()))
-                        e.Cancel = true;
-
-                    dt = GetQuery(st_3.ToString());
-
-                    #endregion
-                }
-                else if (_ModeType == ModeType.依描述)
-                {
-                    #region 使用功能條件
-
-                    StringBuilder st_3 = new StringBuilder();
-                    st_3.Append(string.Format("where server_time>'{0}' ", time1.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and server_time<'{0}' ", time2.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and description LIKE '%{0}%'", StringTextBoxX1));
-                    st_3.Append("and not (action_by LIKE '%[特殊歷程]%')");
+                    st_3.Append(string.Format("and (actor LIKE '%{0}%' ", StringTextBoxX1));
+                    st_3.Append(string.Format("or action LIKE '%{0}%' ", StringTextBoxX1));
+                    st_3.Append(string.Format("or action_by LIKE '%{0}%' ", StringTextBoxX1));
+                    st_3.Append(string.Format("or description LIKE '%{0}%'", StringTextBoxX1));
+                    st_3.Append(string.Format("or client_info LIKE '%{0}%') ", StringTextBoxX1));
+                    st_3.Append(" and not (action_by LIKE '%[特殊歷程]%')");
 
                     if (CheckDataRow(st_3.ToString()))
                         e.Cancel = true;
@@ -266,7 +196,7 @@ namespace K12.LogView.Modules
                 }
                 else
                 {
-                    #region 其它,取得全部資料再進行篩選
+                    #region 預設為取得全部資料再進行篩選
 
                     StringBuilder st_3 = new StringBuilder();
                     st_3.Append(string.Format("where server_time>'{0}' ", time1.ToString(TimeDisplayFormat)));
@@ -288,9 +218,9 @@ namespace K12.LogView.Modules
             }
             else
             {
-                if (_ModeType == ModeType.依類別_ID)
+                if (_ModeType == ModeType.依類別與ID)
                 {
-                    #region 依類別+ID
+                    #region 依類別與ID
 
                     string st = string.Join("','", _TargetIDList.ToArray());
                     StringBuilder st_3 = new StringBuilder();
@@ -306,64 +236,18 @@ namespace K12.LogView.Modules
 
                     #endregion
                 }
-                else if (_ModeType == ModeType.依登入帳號)
+                else if (_ModeType == ModeType.依關鍵字)
                 {
                     #region 使用登入帳號條件
 
                     StringBuilder st_3 = new StringBuilder();
                     st_3.Append(string.Format("where server_time>'{0}' ", time1.ToString(TimeDisplayFormat)));
                     st_3.Append(string.Format("and server_time<'{0}' ", time2.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and actor LIKE '%{0}%'", StringTextBoxX1));
-
-
-                    if (CheckDataRow(st_3.ToString()))
-                        e.Cancel = true;
-
-                    dt = GetQuery(st_3.ToString());
-
-                    #endregion
-                }
-                else if (_ModeType == ModeType.依動作)
-                {
-                    #region 使用動作條件
-
-                    StringBuilder st_3 = new StringBuilder();
-                    st_3.Append(string.Format("where server_time>'{0}' ", time1.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and server_time<'{0}' ", time2.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and action LIKE '%{0}%'", StringTextBoxX1));
-
-
-                    if (CheckDataRow(st_3.ToString()))
-                        e.Cancel = true;
-
-                    dt = GetQuery(st_3.ToString());
-
-                    #endregion
-                }
-                else if (_ModeType == ModeType.依功能)
-                {
-                    #region 使用功能條件
-
-                    StringBuilder st_3 = new StringBuilder();
-                    st_3.Append(string.Format("where server_time>'{0}' ", time1.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and server_time<'{0}' ", time2.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and action_by LIKE '%{0}%'", StringTextBoxX1));
-
-                    if (CheckDataRow(st_3.ToString()))
-                        e.Cancel = true;
-
-                    dt = GetQuery(st_3.ToString());
-
-                    #endregion
-                }
-                else if (_ModeType == ModeType.依描述)
-                {
-                    #region 使用功能條件
-
-                    StringBuilder st_3 = new StringBuilder();
-                    st_3.Append(string.Format("where server_time>'{0}' ", time1.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and server_time<'{0}' ", time2.ToString(TimeDisplayFormat)));
-                    st_3.Append(string.Format("and description LIKE '%{0}%'", StringTextBoxX1));
+                    st_3.Append(string.Format("and (actor LIKE '%{0}%' ", StringTextBoxX1));
+                    st_3.Append(string.Format("or action LIKE '%{0}%' ", StringTextBoxX1));
+                    st_3.Append(string.Format("or action_by LIKE '%{0}%' ", StringTextBoxX1));
+                    st_3.Append(string.Format("or description LIKE '%{0}%' ", StringTextBoxX1));
+                    st_3.Append(string.Format("or client_info LIKE '%{0}%') ", StringTextBoxX1));
 
                     if (CheckDataRow(st_3.ToString()))
                         e.Cancel = true;
@@ -374,7 +258,7 @@ namespace K12.LogView.Modules
                 }
                 else
                 {
-                    #region 其它,取得全部資料再進行篩選
+                    #region 預設為取得全部資料再進行篩選
 
                     StringBuilder st_3 = new StringBuilder();
                     st_3.Append(string.Format("where server_time>'{0}' ", time1.ToString(TimeDisplayFormat)));
@@ -433,73 +317,16 @@ namespace K12.LogView.Modules
                         list.Add(new Obj(row));
                     }
 
-                    if (_ModeType == ModeType.依日期)
+                    if (_ModeType == ModeType.依類別與ID)
                     {
                         textBoxX1.Enabled = false;
-                        foreach (Obj ar in list)
-                        {
-                            dataGridViewX1.Rows.Add(ValueInser(ar));
-                        }
                     }
-                    else if (_ModeType == ModeType.依IP位置)
+
+                    foreach (Obj ar in list)
                     {
-                        foreach (Obj ar in list)
-                        {
-                            //如果IP相同
-                            if (ar.client_info.IPAddress1.Contains(textBoxX1.Text))
-                            {
-                                dataGridViewX1.Rows.Add(ValueInser(ar));
-                            }
-                        }
+                        dataGridViewX1.Rows.Add(ValueInser(ar));
                     }
-                    else if (_ModeType == ModeType.依電腦名稱)
-                    {
-                        foreach (Obj ar in list)
-                        {
-                            if (ar.client_info.HostName.Contains(textBoxX1.Text))
-                            {
-                                dataGridViewX1.Rows.Add(ValueInser(ar));
-                            }
-                        }
-                    }
-                    else if (_ModeType == ModeType.依登入帳號)
-                    {
-                        foreach (Obj ar in list)
-                        {
-                            dataGridViewX1.Rows.Add(ValueInser(ar));
-                        }
-                    }
-                    else if (_ModeType == ModeType.依動作)
-                    {
-                        foreach (Obj ar in list)
-                        {
-                            dataGridViewX1.Rows.Add(ValueInser(ar));
-                        }
-                    }
-                    else if (_ModeType == ModeType.依描述)
-                    {
-                        foreach (Obj ar in list)
-                        {
-                            if (ar.description.Contains(textBoxX1.Text))
-                            {
-                                dataGridViewX1.Rows.Add(ValueInser(ar));
-                            }
-                        }
-                    }
-                    else if (_ModeType == ModeType.依類別_ID)
-                    {
-                        foreach (Obj ar in list)
-                        {
-                            dataGridViewX1.Rows.Add(ValueInser(ar));
-                        }
-                    }
-                    else if (_ModeType == ModeType.依功能)
-                    {
-                        foreach (Obj ar in list)
-                        {
-                            dataGridViewX1.Rows.Add(ValueInser(ar));
-                        }
-                    }
+
 
                     dataGridViewX1.Sort(Column1, ListSortDirection.Descending);
 
@@ -570,20 +397,6 @@ namespace K12.LogView.Modules
             {
                 TextBoxForm vf = new TextBoxForm(dataGridViewX1.Rows[e.RowIndex].Tag as Obj);
                 vf.ShowDialog();
-            }
-        }
-
-        private void checkBoxX1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxX1.Checked)
-            {
-                textBoxX1.Enabled = false;
-                textBoxX1.Text = "";
-                btnReF.Pulse(5);
-            }
-            else
-            {
-                textBoxX1.Enabled = true;
             }
         }
 
@@ -723,7 +536,7 @@ namespace K12.LogView.Modules
             }
         }
 
-        private void groupPanel1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void labelX1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //超級使用者
             //才有權限開啟Log刪除功能
@@ -744,6 +557,6 @@ namespace K12.LogView.Modules
 
     enum ModeType
     {
-        依日期, 依IP位置, 依電腦名稱, 依登入帳號, 依動作, 依描述, 依類別_ID, 依功能
+        依日期, 依關鍵字, 依類別與ID
     }
 }
