@@ -476,19 +476,16 @@ namespace K12.LogView.Modules
                                 if (!list.Contains(obj.id))
                                 {
                                     list.Add(obj.id);
-                                    sb2.AppendLine("時間：" + obj.server_time);
-                                    sb2.AppendLine("電腦：" + obj.client_info.HostName);
-                                    sb2.AppendLine("帳號：" + obj.actor);
-                                    sb2.AppendLine("動作：" + obj.action);
-                                    sb2.AppendLine("功能：" + obj.action_by);
-                                    sb2.AppendLine("描述：" + obj.description);
-                                    sb.AppendLine("");
+                                    sb2.Append("時間「" + obj.server_time + "」");
+                                    sb2.Append("電腦「" + obj.client_info.HostName + "」");
+                                    sb2.Append("帳號「" + obj.actor + "」");
+                                    sb2.Append("功能「" + obj.action_by + "」");
+                                    sb2.Append("動作「" + obj.action + "」\n");
                                 }
                             }
 
                             sb.AppendLine(string.Format("已刪除「{0}」筆系統歷程資料", list.Count.ToString()));
-                            sb.AppendLine("詳細內容");
-                            sb.AppendLine("");
+                            sb.AppendLine("詳細內容：");
                             sb.AppendLine(sb2.ToString());
 
                             if (list.Count > 0)
@@ -496,10 +493,14 @@ namespace K12.LogView.Modules
                                 string qu = string.Format("delete from log where id in({0})", string.Join(",", list));
                                 _Update.Execute(qu);
 
-                                FISCA.LogAgent.ApplicationLog.Log("[特殊歷程]", "刪除系統歷程", sb.ToString());
+                                //FISCA.LogAgent.ApplicationLog.Log("[特殊歷程]", "刪除系統歷程", sb.ToString());
                                 MsgBox.Show("已刪除系統歷程!!");
 
                                 btnReF_Click(null, null);
+                            }
+                            else
+                            {
+                                MsgBox.Show("未選擇歷程資料\n已取消操作!!");
                             }
                         }
                         else
