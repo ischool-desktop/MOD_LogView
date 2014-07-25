@@ -23,10 +23,10 @@ namespace K12.LogView.Modules
 
             string SystemLog = "查詢系統歷程";
             string UserLog = "查詢個人歷程";
-            string StudentLog = "學生歷程";
-            string ClassLog = "班級歷程";
-            string TeacherLog = "教師歷程";
-            string CourseLog = "課程歷程";
+            //string StudentLog = "學生歷程";
+            //string ClassLog = "班級歷程";
+            //string TeacherLog = "教師歷程";
+            //string CourseLog = "課程歷程";
 
             //FISCA.Features.Register(URL查詢系統歷程, arg =>
             //{
@@ -75,91 +75,91 @@ namespace K12.LogView.Modules
                 new ViewForm("查詢個人歷程").ShowDialog();
             };
 
-            RibbonBarItem rbItem = FISCA.Presentation.MotherForm.RibbonBarItems["學生", "其它"];
-            rbItem[StudentLog].Size = RibbonBarButton.MenuButtonSize.Medium;
-            rbItem[StudentLog].Image = Properties.Resources.folder_zoom_64;
-            rbItem[StudentLog].Enable = (Permissions.學生歷程權限 && K12.Presentation.NLDPanels.Student.SelectedSource.Count > 0);
-            rbItem[StudentLog].Click += delegate
-            {
-                new ViewForm("student", K12.Presentation.NLDPanels.Student.SelectedSource).ShowDialog();
-            };
+            //RibbonBarItem rbItem = FISCA.Presentation.MotherForm.RibbonBarItems["學生", "其它"];
+            //rbItem[StudentLog].Size = RibbonBarButton.MenuButtonSize.Medium;
+            //rbItem[StudentLog].Image = Properties.Resources.folder_zoom_64;
+            //rbItem[StudentLog].Enable = (Permissions.學生歷程權限 && K12.Presentation.NLDPanels.Student.SelectedSource.Count > 0);
+            //rbItem[StudentLog].Click += delegate
+            //{
+            //    new ViewForm("student", K12.Presentation.NLDPanels.Student.SelectedSource).ShowDialog();
+            //};
 
-            rbItem = FISCA.Presentation.MotherForm.RibbonBarItems["班級", "其它"];
-            rbItem[ClassLog].Size = RibbonBarButton.MenuButtonSize.Medium;
-            rbItem[ClassLog].Image = Properties.Resources.folder_zoom_64;
-            rbItem[ClassLog].Enable = (Permissions.班級歷程權限 && K12.Presentation.NLDPanels.Class.SelectedSource.Count > 0);
-            rbItem[ClassLog].Click += delegate
-            {
-                new ViewForm("class", K12.Presentation.NLDPanels.Class.SelectedSource).ShowDialog();
-            };
+            //rbItem = FISCA.Presentation.MotherForm.RibbonBarItems["班級", "其它"];
+            //rbItem[ClassLog].Size = RibbonBarButton.MenuButtonSize.Medium;
+            //rbItem[ClassLog].Image = Properties.Resources.folder_zoom_64;
+            //rbItem[ClassLog].Enable = (Permissions.班級歷程權限 && K12.Presentation.NLDPanels.Class.SelectedSource.Count > 0);
+            //rbItem[ClassLog].Click += delegate
+            //{
+            //    new ViewForm("class", K12.Presentation.NLDPanels.Class.SelectedSource).ShowDialog();
+            //};
 
-            rbItem = FISCA.Presentation.MotherForm.RibbonBarItems["教師", "其它"];
-            rbItem[TeacherLog].Size = RibbonBarButton.MenuButtonSize.Medium;
-            rbItem[TeacherLog].Image = Properties.Resources.folder_zoom_64;
-            rbItem[TeacherLog].Enable = (Permissions.教師歷程權限 && K12.Presentation.NLDPanels.Teacher.SelectedSource.Count > 0);
-            rbItem[TeacherLog].Click += delegate
-            {
-                new ViewForm("teacher", K12.Presentation.NLDPanels.Teacher.SelectedSource).ShowDialog();
-            };
+            //rbItem = FISCA.Presentation.MotherForm.RibbonBarItems["教師", "其它"];
+            //rbItem[TeacherLog].Size = RibbonBarButton.MenuButtonSize.Medium;
+            //rbItem[TeacherLog].Image = Properties.Resources.folder_zoom_64;
+            //rbItem[TeacherLog].Enable = (Permissions.教師歷程權限 && K12.Presentation.NLDPanels.Teacher.SelectedSource.Count > 0);
+            //rbItem[TeacherLog].Click += delegate
+            //{
+            //    new ViewForm("teacher", K12.Presentation.NLDPanels.Teacher.SelectedSource).ShowDialog();
+            //};
 
-            rbItem = FISCA.Presentation.MotherForm.RibbonBarItems["課程", "其它"];
-            rbItem[CourseLog].Size = RibbonBarButton.MenuButtonSize.Medium;
-            rbItem[CourseLog].Image = Properties.Resources.folder_zoom_64;
-            rbItem[CourseLog].Enable = (Permissions.課程歷程權限 && K12.Presentation.NLDPanels.Course.SelectedSource.Count > 0);
-            rbItem[CourseLog].Click += delegate
-            {
-                new ViewForm("course", K12.Presentation.NLDPanels.Course.SelectedSource).ShowDialog();
-            };
+            //rbItem = FISCA.Presentation.MotherForm.RibbonBarItems["課程", "其它"];
+            //rbItem[CourseLog].Size = RibbonBarButton.MenuButtonSize.Medium;
+            //rbItem[CourseLog].Image = Properties.Resources.folder_zoom_64;
+            //rbItem[CourseLog].Enable = (Permissions.課程歷程權限 && K12.Presentation.NLDPanels.Course.SelectedSource.Count > 0);
+            //rbItem[CourseLog].Click += delegate
+            //{
+            //    new ViewForm("course", K12.Presentation.NLDPanels.Course.SelectedSource).ShowDialog();
+            //};
             #endregion
 
             #region SelectedSourceChanged
-            K12.Presentation.NLDPanels.Student.SelectedSourceChanged += delegate
-            {
-                if (K12.Presentation.NLDPanels.Student.SelectedSource.Count > 0)
-                {
-                    FISCA.Presentation.MotherForm.RibbonBarItems["學生", "其它"][StudentLog].Enable = Permissions.學生歷程權限;
-                }
-                else
-                {
-                    FISCA.Presentation.MotherForm.RibbonBarItems["學生", "其它"][StudentLog].Enable = false;
-                }
-            };
+            //K12.Presentation.NLDPanels.Student.SelectedSourceChanged += delegate
+            //{
+            //    if (K12.Presentation.NLDPanels.Student.SelectedSource.Count > 0)
+            //    {
+            //        FISCA.Presentation.MotherForm.RibbonBarItems["學生", "其它"][StudentLog].Enable = Permissions.學生歷程權限;
+            //    }
+            //    else
+            //    {
+            //        FISCA.Presentation.MotherForm.RibbonBarItems["學生", "其它"][StudentLog].Enable = false;
+            //    }
+            //};
 
-            K12.Presentation.NLDPanels.Class.SelectedSourceChanged += delegate
-            {
-                if (K12.Presentation.NLDPanels.Class.SelectedSource.Count > 0)
-                {
-                    FISCA.Presentation.MotherForm.RibbonBarItems["班級", "其它"][ClassLog].Enable = Permissions.班級歷程權限;
-                }
-                else
-                {
-                    FISCA.Presentation.MotherForm.RibbonBarItems["班級", "其它"][ClassLog].Enable = false;
-                }
-            };
+            //K12.Presentation.NLDPanels.Class.SelectedSourceChanged += delegate
+            //{
+            //    if (K12.Presentation.NLDPanels.Class.SelectedSource.Count > 0)
+            //    {
+            //        FISCA.Presentation.MotherForm.RibbonBarItems["班級", "其它"][ClassLog].Enable = Permissions.班級歷程權限;
+            //    }
+            //    else
+            //    {
+            //        FISCA.Presentation.MotherForm.RibbonBarItems["班級", "其它"][ClassLog].Enable = false;
+            //    }
+            //};
 
-            K12.Presentation.NLDPanels.Teacher.SelectedSourceChanged += delegate
-            {
-                if (K12.Presentation.NLDPanels.Teacher.SelectedSource.Count > 0)
-                {
-                    FISCA.Presentation.MotherForm.RibbonBarItems["教師", "其它"][TeacherLog].Enable = Permissions.教師歷程權限;
-                }
-                else
-                {
-                    FISCA.Presentation.MotherForm.RibbonBarItems["教師", "其它"][TeacherLog].Enable = false;
-                }
-            };
+            //K12.Presentation.NLDPanels.Teacher.SelectedSourceChanged += delegate
+            //{
+            //    if (K12.Presentation.NLDPanels.Teacher.SelectedSource.Count > 0)
+            //    {
+            //        FISCA.Presentation.MotherForm.RibbonBarItems["教師", "其它"][TeacherLog].Enable = Permissions.教師歷程權限;
+            //    }
+            //    else
+            //    {
+            //        FISCA.Presentation.MotherForm.RibbonBarItems["教師", "其它"][TeacherLog].Enable = false;
+            //    }
+            //};
 
-            K12.Presentation.NLDPanels.Course.SelectedSourceChanged += delegate
-            {
-                if (K12.Presentation.NLDPanels.Course.SelectedSource.Count > 0)
-                {
-                    FISCA.Presentation.MotherForm.RibbonBarItems["課程", "其它"][CourseLog].Enable = Permissions.課程歷程權限;
-                }
-                else
-                {
-                    FISCA.Presentation.MotherForm.RibbonBarItems["課程", "其它"][CourseLog].Enable = false;
-                }
-            };
+            //K12.Presentation.NLDPanels.Course.SelectedSourceChanged += delegate
+            //{
+            //    if (K12.Presentation.NLDPanels.Course.SelectedSource.Count > 0)
+            //    {
+            //        FISCA.Presentation.MotherForm.RibbonBarItems["課程", "其它"][CourseLog].Enable = Permissions.課程歷程權限;
+            //    }
+            //    else
+            //    {
+            //        FISCA.Presentation.MotherForm.RibbonBarItems["課程", "其它"][CourseLog].Enable = false;
+            //    }
+            //};
             #endregion
 
             #region 權限登錄
@@ -169,17 +169,17 @@ namespace K12.LogView.Modules
             ribbon = RoleAclSource.Instance["系統"]["系統歷程"];
             ribbon.Add(new RibbonFeature(Permissions.使用者歷程國中, "查詢個人歷程"));
 
-            ribbon = RoleAclSource.Instance["學生"]["功能按鈕"];
-            ribbon.Add(new RibbonFeature(Permissions.學生歷程國中, StudentLog));
+            //ribbon = RoleAclSource.Instance["學生"]["功能按鈕"];
+            //ribbon.Add(new RibbonFeature(Permissions.學生歷程國中, StudentLog));
 
-            ribbon = RoleAclSource.Instance["班級"]["功能按鈕"];
-            ribbon.Add(new RibbonFeature(Permissions.班級歷程國中, ClassLog));
+            //ribbon = RoleAclSource.Instance["班級"]["功能按鈕"];
+            //ribbon.Add(new RibbonFeature(Permissions.班級歷程國中, ClassLog));
 
-            ribbon = RoleAclSource.Instance["教師"]["功能按鈕"];
-            ribbon.Add(new RibbonFeature(Permissions.教師歷程國中, TeacherLog));
+            //ribbon = RoleAclSource.Instance["教師"]["功能按鈕"];
+            //ribbon.Add(new RibbonFeature(Permissions.教師歷程國中, TeacherLog));
 
-            ribbon = RoleAclSource.Instance["課程"]["功能按鈕"];
-            ribbon.Add(new RibbonFeature(Permissions.課程歷程國中, CourseLog));
+            //ribbon = RoleAclSource.Instance["課程"]["功能按鈕"];
+            //ribbon.Add(new RibbonFeature(Permissions.課程歷程國中, CourseLog));
             #endregion
 
             //Log修改記錄
